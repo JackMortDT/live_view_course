@@ -1,0 +1,20 @@
+{
+  "repository": {},
+  "description": " ",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "cd .. && mix assets.deploy && rm -f _build/esbuild",
+    "deploy-tailwind": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css"
+  },
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "postcss-import": "^14.0.2",
+    "postcss-nesting": "^10.0.2",
+    "tailwindcss": "^2.2.19"
+  }
+}

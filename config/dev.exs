@@ -26,7 +26,15 @@ config :live_view_studio, LiveViewStudioWeb.Endpoint,
   secret_key_base: "LSBRVrG8aKL8bRw5Hv8TKX9lsOsJrKtcfQ781ZZ3v2hNR9FDm9R+mlKRMCxT/5S1",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npx: [
+      "tailwindcss",
+      "--input=css/app.css",
+      "--output=../priv/static/assets/app.css",
+      "--postcss",
+      "--watch",
+      cd: Path.expand("../assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support

@@ -64,7 +64,11 @@ defmodule LiveViewStudio.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "esbuild default --minify",
+        "cmd --cd assets npm run deploy-tailwind",
+        "phx.digest"
+      ]
     ]
   end
 end
