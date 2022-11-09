@@ -17,7 +17,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
       <div class="card">
         <div class="content">
           <div class="seats">
-            <img src="images/license.svg">
+            <Heroicons.LiveView.icon name="credit-card" type="outline" />
             <span>
               Your license is currently for
               <strong><%= @seats %> <%= ngettext("seat", "seats", @seats) %></strong>

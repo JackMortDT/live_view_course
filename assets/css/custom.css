@@ -97,7 +97,7 @@ header {
   .seats {
     @apply inline-flex items-center mb-8;
 
-    img {
+    svg {
       @apply w-10 pr-2;
     }
 
