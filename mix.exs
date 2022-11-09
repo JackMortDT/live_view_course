@@ -55,7 +55,8 @@ defmodule LiveViewStudio.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:dialyxir, "~> 1.1.0", only: [:dev], runtime: false},
       {:number, "~> 1.0.1"},
-      {:ex_heroicons, "~> 2.0.0"}
+      {:ex_heroicons, "~> 2.0.0"},
+      {:timex, "~> 3.0"}
     ]
   end
 
