@@ -1,8 +1,9 @@
 defmodule LiveViewStudioWeb.LicenseLive do
   use LiveViewStudioWeb, :live_view
 
-  alias LiveViewStudio.Licenses
   import Number.Currency
+
+  alias LiveViewStudio.Licenses
 
   def mount(_params, _session, socket) do
     socket = assign(socket, seats: 3, amount: Licenses.calculate(3))
@@ -19,16 +20,16 @@ defmodule LiveViewStudioWeb.LicenseLive do
             <img src="images/license.svg">
             <span>
               Your license is currently for
-              <strong><%= @seats %></strong> seats.
+              <strong><%= @seats %> <%= ngettext("seat", "seats", @seats) %></strong>
             </span>
           </div>
           <form phx-change="update">
             <input 
-              type="range" 
-              min="1" 
-              max="10" 
-              name="seats" 
-              value={"#{@seats}"}
+              type="range"
+              min="1"
+              max="10"
+              name="seats"
+              value={@seats}
             />
           </form>
           <div class="amount">
