@@ -5,6 +5,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
 
   alias LiveViewStudio.Licenses
 
+  @impl true
   def mount(_params, _session, socket) do
     if connected?(socket) do
       :timer.send_interval(1000, self(), :tick)
@@ -23,6 +24,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
     {:ok, socket}
   end
 
+  @impl true
   def render(assigns) do
     ~H"""
     <h1>Team License</h1>
@@ -61,6 +63,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
     """
   end
 
+  @impl true
   def handle_event("update", %{"seats" => seats}, socket) do
     seats = String.to_integer(seats)
 
@@ -73,6 +76,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_info(:tick, socket) do
     expiration_time = socket.assigns.expiration_time
 
