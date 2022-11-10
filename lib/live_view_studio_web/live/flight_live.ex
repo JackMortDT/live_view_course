@@ -2,7 +2,9 @@ defmodule LiveViewStudioWeb.FlightLive do
   use LiveViewStudioWeb, :live_view
 
   alias LiveViewStudio.Flights
+  @format_date "%d/%m/%Y %H:%M:%S"
 
+  @impl true
   def mount(_params, _session, socket) do
     socket =
       assign(
@@ -15,6 +17,7 @@ defmodule LiveViewStudioWeb.FlightLive do
     {:ok, socket}
   end
 
+  @impl true
   def render(assigns) do
     ~H"""
     <h1>Find a flight</h1>
@@ -55,10 +58,10 @@ defmodule LiveViewStudioWeb.FlightLive do
               </div>
               <div class="second-line">
                 <div class="departs">
-                  Departs: <%= flight.departure_time %>
+                  Departs: <%= format_date(flight.departure_time) %>
                 </div>
                 <div class="arrives">
-                  Arrives: <%= flight.arrival_time %>
+                  Arrives: <%= format_date(flight.arrival_time) %>
                 </div>
               </div>
             </li>
@@ -102,5 +105,12 @@ defmodule LiveViewStudioWeb.FlightLive do
 
         {:noreply, socket}
     end
+  end
+
+  defp format_date(date) do
+    Timex.Format.DateTime.Formatters.Strftime.format!(
+      date,
+      @format_date
+    )
   end
 end
