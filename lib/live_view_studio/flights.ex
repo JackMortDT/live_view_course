@@ -19,10 +19,8 @@ defmodule LiveViewStudio.Flights do
 
   @spec search_by_airport(String.t()) :: list(flight_t())
   def search_by_airport(airport) do
-    Enum.filter(
-      list_flights(),
-      &(&1.origin == airport || &1.destination == airport)
-    )
+    list_flights()
+    |> Enum.filter(&(&1.origin == airport || &1.destination == airport))
   end
 
   @spec list_flights() :: list(flight_t())

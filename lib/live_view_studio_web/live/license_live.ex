@@ -51,6 +51,7 @@ defmodule LiveViewStudioWeb.LicenseLive do
               min="1"
               max="10"
               name="seats"
+              phx-debounce="250"
               value={@seats}
             />
           </form>
